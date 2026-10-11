@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102a35">
+  <meta name="description" content="Portafolio profesional de José Luis Montoya Zambrano: geología, geotecnia, pilotaje de drones UAS y análisis de datos con Python y Power BI.">
+  <title>José Luis Montoya Zambrano | Portafolio profesional</title>
+  <style>
+    :root {
+      --ink: #102a35;
+      --ink-soft: #24434c;
+      --muted: #60747a;
+      --paper: #f5f4ef;
+      --surface: #fffefa;
+      --line: #dfe5df;
+      --teal: #1c827c;
+      --teal-dark: #176b66;
+      --mint: #d9efdf;
+      --lime: #d4ee86;
+      --gold: #efb86e;
+      --shadow: 0 18px 50px rgba(16, 42, 53, .09);
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --max-width: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button { font: inherit; }
+    .container { width: min(var(--max-width), calc(100% - 44px)); margin-inline: auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 30;
+      background: rgba(245, 244, 239, .91);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(223, 229, 223, .85);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 850; letter-spacing: -.04em; }
+    .brand-mark { display: grid; place-items: center; width: 39px; height: 39px; border-radius: 13px; color: var(--lime); background: var(--ink); font-size: .8rem; letter-spacing: -.04em; }
+    .brand-name { font-size: .95rem; line-height: 1.1; }
+    .brand-name span { display: block; margin-top: 4px; color: var(--muted); font-size: .67rem; font-weight: 650; letter-spacing: .11em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 25px; }
+    .nav-links a { text-decoration: none; color: #456068; font-size: .9rem; font-weight: 650; transition: color .2s; }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-links .nav-cta { color: white; background: var(--ink); padding: 11px 16px; border-radius: 999px; }
+    .nav-links .nav-cta:hover { background: var(--teal-dark); color: white; }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 9px 12px; color: var(--ink); cursor: pointer; }
+
+    .hero { position: relative; overflow: hidden; padding: 78px 0 65px; }
+    .hero::before { content: ""; position: absolute; width: 520px; height: 520px; top: -290px; right: -90px; border-radius: 50%; background: radial-gradient(circle, rgba(212,238,134,.55), rgba(212,238,134,0) 70%); pointer-events: none; }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: 58px; align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--teal-dark); font-weight: 800; font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 23px; height: 2px; background: var(--teal); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin: 20px 0 18px; max-width: 690px; font-size: clamp(2.7rem, 5.4vw, 5rem); line-height: .99; letter-spacing: -.065em; font-weight: 850; }
+    h1 .accent { color: var(--teal); }
+    .hero-subtitle { margin: 0 0 18px; font-size: clamp(1.05rem, 1.9vw, 1.3rem); font-weight: 750; letter-spacing: -.025em; }
+    .hero-copy { max-width: 600px; color: var(--muted); font-size: 1.02rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 13px 19px; border: 1px solid transparent; border-radius: 999px; text-decoration: none; font-size: .91rem; font-weight: 780; cursor: pointer; transition: transform .2s, background .2s, border-color .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--ink); color: white; }
+    .btn-primary:hover { background: var(--teal-dark); }
+    .btn-secondary { background: transparent; border-color: #c8d4cf; color: var(--ink); }
+    .btn-secondary:hover { background: var(--surface); border-color: var(--teal); }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 27px; }
+    .tag { display: inline-flex; align-items: center; padding: 6px 10px; color: #446169; border: 1px solid #d6dfd8; background: rgba(255,254,250,.65); border-radius: 999px; font-size: .77rem; font-weight: 700; }
+    .hero-art { position: relative; min-height: 410px; display: grid; place-items: center; }
+    .art-card { position: relative; width: min(100%, 465px); overflow: hidden; padding: 25px; border-radius: 30px; color: #f5f7ef; background: var(--ink); box-shadow: 0 28px 70px rgba(16,42,53,.2); transform: rotate(1.5deg); }
+    .art-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+    .art-label { color: #a9c2bf; font-size: .72rem; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; }
+    .art-heading { margin: 7px 0 0; font-size: 1.45rem; line-height: 1.2; font-weight: 800; letter-spacing: -.04em; }
+    .art-icon { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.18); border-radius: 14px; color: var(--lime); }
+    .contour { display: block; width: 100%; margin: 25px 0 21px; }
+    .art-bottom { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .art-stat { padding: 13px 12px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.08); border-radius: 15px; }
+    .art-stat strong { display: block; font-size: 1.05rem; color: var(--lime); letter-spacing: -.03em; }
+    .art-stat span { display: block; margin-top: 3px; color: #b7c8c7; font-size: .67rem; }
+    .float-note { position: absolute; z-index: 2; display: flex; align-items: center; gap: 11px; padding: 13px 16px; border: 1px solid rgba(223,229,223,.9); border-radius: 16px; background: var(--surface); box-shadow: var(--shadow); font-size: .8rem; font-weight: 800; }
+    .float-note svg { flex: 0 0 auto; color: var(--teal); }
+    .float-note.one { top: 35px; left: -10px; }
+    .float-note.two { bottom: 26px; right: -4px; }
+
+    .section { padding: 78px 0; }
+    .section-light { background: var(--surface); }
+    .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
+    .section-kicker { display: block; margin-bottom: 9px; color: var(--teal-dark); font-size: .74rem; letter-spacing: .15em; font-weight: 850; text-transform: uppercase; }
+    h2 { margin-bottom: 0; font-size: clamp(2rem, 3.5vw, 3.15rem); line-height: 1.08; letter-spacing: -.055em; font-weight: 850; }
+    .section-heading p { max-width: 465px; margin-bottom: 3px; color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 54px; align-items: start; }
+    .about-aside { padding: 27px; color: white; background: var(--teal-dark); border-radius: var(--radius-lg); }
+    .about-aside .big-mark { font-size: 2.9rem; line-height: 1; margin-bottom: 24px; }
+    .about-aside h3 { margin-bottom: 10px; font-size: 1.35rem; letter-spacing: -.035em; }
+    .about-aside p { margin-bottom: 0; color: #d2e9e2; font-size: .95rem; }
+    .about-main p { color: #50666c; font-size: 1.04rem; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
+    .pill { padding: 8px 12px; border-radius: 10px; color: #2e585b; background: #eaf3e9; font-size: .82rem; font-weight: 750; }
+
+    .education-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .education-card { min-height: 215px; padding: 22px 20px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--paper); transition: transform .22s, box-shadow .22s; }
+    .education-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .education-icon { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: 21px; border-radius: 13px; color: var(--teal-dark); background: var(--mint); }
+    .education-card h3 { margin-bottom: 8px; font-size: 1.02rem; line-height: 1.32; letter-spacing: -.025em; }
+    .education-card p { margin-bottom: 0; color: var(--muted); font-size: .86rem; }
+    .education-card .credential-type { display: block; margin-top: 13px; color: var(--teal-dark); font-size: .7rem; font-weight: 850; text-transform: uppercase; letter-spacing: .1em; }
+
+    .project-tools { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .filter-btn { padding: 10px 15px; border: 1px solid #d5dfd7; border-radius: 999px; color: #52686d; background: transparent; font-size: .84rem; font-weight: 750; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+    .filter-btn:hover { border-color: var(--teal); }
+    .filter-btn.active { color: white; border-color: var(--ink); background: var(--ink); }
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .project-card { display: flex; flex-direction: column; overflow: hidden; min-height: 405px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); transition: transform .22s, box-shadow .22s; }
+    .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .project-card[hidden] { display: none; }
+    .project-visual { position: relative; display: flex; align-items: flex-end; min-height: 145px; padding: 20px; overflow: hidden; color: white; background: var(--ink); }
+    .project-visual::before, .project-visual::after { content: ""; position: absolute; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; }
+    .project-visual::before { width: 220px; height: 220px; top: -120px; right: -35px; }
+    .project-visual::after { width: 150px; height: 150px; top: -82px; right: 0; }
+    .project-visual.teal { background: #196e6b; }
+    .project-visual.copper { background: #6c4935; }
+    .project-visual.blue { background: #314f72; }
+    .project-visual.green { background: #375d4e; }
+    .project-visual.plum { background: #5c4a69; }
+    .visual-metric { position: relative; z-index: 1; }
+    .visual-metric small { display: block; color: rgba(255,255,255,.75); font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .visual-metric strong { display: block; margin-top: 1px; font-size: 1.55rem; letter-spacing: -.05em; line-height: 1.2; }
+    .visual-stamp { position: absolute; right: 19px; bottom: 19px; z-index: 1; width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.28); border-radius: 15px; color: #eff6c5; background: rgba(255,255,255,.1); }
+    .project-content { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 22px; }
+    .project-category { display: inline-flex; margin-bottom: 11px; color: var(--teal-dark); font-size: .69rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 850; }
+    .project-content h3 { margin-bottom: 10px; font-size: 1.2rem; line-height: 1.25; letter-spacing: -.035em; }
+    .project-content p { margin-bottom: 17px; color: var(--muted); font-size: .9rem; }
+    .tech-list { display: flex; flex-wrap: wrap; gap: 6px; margin: auto 0 18px; }
+    .tech-list span { padding: 5px 8px; border-radius: 7px; color: #566b6f; background: #edf1eb; font-size: .7rem; font-weight: 750; }
+    .project-link { display: inline-flex; align-items: center; gap: 8px; padding: 0; border: 0; color: var(--teal-dark); background: transparent; font-size: .88rem; font-weight: 850; cursor: pointer; }
+    .project-link:hover { color: var(--ink); }
+    .project-note { margin-top: 19px; margin-bottom: 0; color: var(--muted); font-size: .8rem; }
+
+    .contact-section { padding: 66px 0; color: white; background: var(--ink); }
+    .contact-grid { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .contact-section .section-kicker { color: var(--lime); }
+    .contact-section h2 { max-width: 630px; }
+    .contact-section p { max-width: 590px; margin-top: 17px; margin-bottom: 0; color: #b9cdca; }
+    .contact-actions { display: flex; flex-direction: column; gap: 10px; min-width: 220px; }
+    .contact-actions .btn-primary { color: var(--ink); background: var(--lime); }
+    .contact-actions .btn-primary:hover { background: #e3f6b2; }
+    .contact-actions .btn-secondary { color: white; border-color: rgba(255,255,255,.26); }
+    .contact-actions .btn-secondary:hover { background: rgba(255,255,255,.08); }
+    footer { padding: 20px 0; color: #6a7e81; background: #0a2029; font-size: .78rem; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; }
+
+    .modal-backdrop { position: fixed; inset: 0; z-index: 100; display: none; place-items: center; padding: 20px; background: rgba(6, 23, 29, .7); backdrop-filter: blur(7px); }
+    .modal-backdrop.open { display: grid; }
+    .modal { width: min(720px, 100%); max-height: min(85vh, 850px); overflow-y: auto; padding: 30px; border-radius: 24px; background: var(--surface); box-shadow: 0 30px 100px rgba(0,0,0,.28); }
+    .modal-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+    .modal .project-category { margin-bottom: 8px; }
+    .modal h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin-bottom: 16px; }
+    .modal-close { flex: 0 0 auto; display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 12px; background: white; color: var(--ink); cursor: pointer; font-size: 1.3rem; }
+    .modal-description { color: var(--muted); }
+    .modal h3 { margin: 24px 0 10px; font-size: 1rem; }
+    .modal ul { padding-left: 20px; color: #50666c; }
+    .modal li + li { margin-top: 7px; }
+    .modal-conclusion { margin-top: 21px; padding: 16px 18px; border-left: 3px solid var(--teal); border-radius: 0 12px 12px 0; background: #edf5ed; color: #31585a; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    @media (max-width: 940px) {
+      .hero-grid { grid-template-columns: 1fr 0.85fr; gap: 26px; }
+      .hero-art { min-height: 355px; }
+      .float-note.one { left: -4px; }
+      .education-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .section-heading { align-items: flex-start; flex-direction: column; }
+      .project-tools { justify-content: flex-start; }
+      .contact-grid { align-items: flex-start; flex-direction: column; }
+      .contact-actions { flex-direction: row; flex-wrap: wrap; }
+    }
+    @media (max-width: 700px) {
+      .container { width: min(var(--max-width), calc(100% - 30px)); }
+      .nav { min-height: 68px; }
+      .menu-toggle { display: inline-flex; }
+      .nav-links { position: absolute; top: 68px; left: 0; right: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 10px 15px 16px; border-bottom: 1px solid var(--line); background: var(--paper); }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 10px; }
+      .nav-links .nav-cta { text-align: center; margin-top: 4px; }
+      .hero { padding: 52px 0 48px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 29px; }
+      h1 { max-width: 540px; font-size: clamp(2.75rem, 13vw, 4rem); }
+      .hero-art { min-height: 330px; margin-inline: 4px; }
+      .art-card { padding: 21px; }
+      .float-note.one { top: 8px; left: -3px; }
+      .float-note.two { bottom: 3px; right: -1px; }
+      .section { padding: 58px 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 22px; }
+      .education-grid, .projects-grid { grid-template-columns: 1fr; }
+      .education-card { min-height: auto; }
+      .education-icon { margin-bottom: 14px; }
+      .project-card { min-height: 0; }
+      .project-visual { min-height: 130px; }
+      .contact-actions { flex-direction: column; width: 100%; }
+      .contact-actions .btn { width: 100%; }
+      .footer-row { flex-direction: column; gap: 5px; }
+      .modal { padding: 23px 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio del portafolio">
+        <span class="brand-mark">JLM</span>
+        <span class="brand-name">José Luis Montoya Zambrano<span>Portafolio profesional</span></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menú ☰</button>
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="#perfil">Perfil</a>
+        <a href="#formacion">Formación</a>
+        <a href="#proyectos">Proyectos</a>
+        <a class="nav-cta" href="#contacto">Contacto ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Geociencias · Tecnología · Datos</span>
+          <h1>Del territorio a las <span class="accent">decisiones.</span></h1>
+          <p class="hero-subtitle">José Luis Montoya Zambrano</p>
+          <p class="hero-copy">Geólogo y especialista en geotecnia, piloto de dron UAS certificado ante la Aerocivil y analista de datos. Integro una mirada técnica del territorio con herramientas de análisis y visualización para convertir información en hallazgos claros.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#proyectos">Explorar proyectos <span aria-hidden="true">↘</span></a>
+            <a class="btn btn-secondary" href="#contacto">Conectar conmigo <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-tags" aria-label="Áreas principales">
+            <span class="tag">Python</span><span class="tag">Power BI</span><span class="tag">Análisis estadístico</span><span class="tag">Geotecnia</span><span class="tag">Drones UAS</span>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Ilustración conceptual que combina datos y análisis del territorio">
+          <div class="float-note one">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 18V6m0 12h16M7 15l4-5 3 2 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Análisis · Visualización
+          </div>
+          <div class="art-card">
+            <div class="art-top">
+              <div><div class="art-label">Visión interdisciplinaria</div><div class="art-heading">Observar.<br>Analizar. Decidir.</div></div>
+              <div class="art-icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 4 7v5c0 5 3.5 7.7 8 9 4.5-1.3 8-4 8-9V7l-8-4Z" stroke="currentColor" stroke-width="1.7"/><path d="m8.5 12 2.2 2.2 4.8-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            </div>
+            <svg class="contour" viewBox="0 0 430 165" role="img" aria-label="Líneas topográficas abstractas y una gráfica ascendente">
+              <defs><linearGradient id="lineFade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d4ee86"/><stop offset="1" stop-color="#4db7a5"/></linearGradient></defs>
+              <g fill="none" stroke="#b4d3c4" stroke-opacity=".28" stroke-width="1.2">
+                <path d="M-8 42C40 9 69 83 111 51S176 12 211 51s82 15 109-9 64-31 118-2"/>
+                <path d="M-8 55C36 22 73 96 115 64S178 25 213 64s82 15 109-9 64-31 118-2"/>
+                <path d="M-8 68C36 35 73 109 115 77S178 38 213 77s82 15 109-9 64-31 118-2"/>
+                <path d="M-8 81C36 48 73 122 115 90S178 51 213 90s82 15 109-9 64-31 118-2"/>
+                <path d="M-8 94C36 61 73 135 115 103S178 64 213 103s82 15 109-9 64-31 118-2"/>
+              </g>
+              <path d="M18 139 82 119 130 127 178 92 222 103 276 65 319 75 372 34 409 22" fill="none" stroke="url(#lineFade)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <g fill="#d4ee86"><circle cx="178" cy="92" r="4"/><circle cx="276" cy="65" r="4"/><circle cx="372" cy="34" r="4"/><circle cx="409" cy="22" r="4"/></g>
+              <path d="M18 148H412" stroke="#b4d3c4" stroke-opacity=".25"/>
+            </svg>
+            <div class="art-bottom">
+              <div class="art-stat"><strong>GEO</strong><span>Territorio</span></div>
+              <div class="art-stat"><strong>DATA</strong><span>Información</span></div>
+              <div class="art-stat"><strong>UAS</strong><span>Observación</span></div>
+            </div>
+          </div>
+          <div class="float-note two">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17.5 8.5 12l3.5 3.5L21 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Hallazgos para la acción
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="perfil">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="section-kicker">Perfil profesional</span><h2>Una mirada técnica,<br>varias formas de aportar.</h2></div>
+          <p>Combino conocimiento del entorno físico, herramientas tecnológicas y pensamiento analítico para abordar problemas desde distintas perspectivas.</p>
+        </div>
+        <div class="about-grid">
+          <aside class="about-aside">
+            <div class="big-mark" aria-hidden="true">↗</div>
+            <h3>Aprender para resolver</h3>
+            <p>Me interesa estructurar información, encontrar patrones y comunicar resultados de manera comprensible, útil y orientada a objetivos.</p>
+          </aside>
+          <div class="about-main">
+            <p>Mi formación en geología y geotecnia aporta una base para comprender el territorio y sus condiciones. La certificación como piloto UAS suma una perspectiva de observación aérea, mientras que el análisis de datos me permite explorar información, contrastar hipótesis y construir visualizaciones para apoyar decisiones.</p>
+            <p>En este portafolio presento proyectos académicos de análisis exploratorio, estadística aplicada, segmentación de clientes y construcción de dashboards. Cada proyecto resume el problema abordado, las herramientas utilizadas y los hallazgos obtenidos.</p>
+            <div class="pill-row"><span class="pill">Pensamiento analítico</span><span class="pill">Limpieza de datos</span><span class="pill">Estadística</span><span class="pill">Visualización</span><span class="pill">Modelado de datos</span><span class="pill">Interpretación técnica</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="formacion">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="section-kicker">Formación y certificaciones</span><h2>Conocimiento en construcción.</h2></div>
+          <p>Cuatro áreas de formación que conforman mi perfil profesional.</p>
+        </div>
+        <div class="education-grid">
+          <article class="education-card">
+            <div class="education-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m3 18 5-8 4 4 4-9 5 13H3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3 20h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+            <h3>Profesional en Geología</h3><p>Universidad de Caldas</p><span class="credential-type">Título profesional</span>
+          </article>
+          <article class="education-card">
+            <div class="education-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 20h18M5 20V9l7-5 7 5v11M9 20v-6h6v6M8 10h.01M16 10h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Especialista en Geotecnia</h3><p>Universidad de Caldas</p><span class="credential-type">Posgrado</span>
+          </article>
+          <article class="education-card">
+            <div class="education-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8 4 5m13 3 3-3M7 16l-3 3m13-3 3 3M9 7h6l2 3v4l-2 3H9l-2-3v-4l2-3Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 10v4m-2-2h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+            <h3>Piloto de dron UAS</h3><p>Certificado ante la Aerocivil</p><span class="credential-type">Certificación</span>
+          </article>
+          <article class="education-card">
+            <div class="education-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V5m0 14h17M7 15l4-4 3 2 5-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Analista de Datos</h3><p>Tripleten</p><span class="credential-type">Formación especializada</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="proyectos">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="section-kicker">Portafolio de proyectos</span><h2>Datos que cuentan historias.</h2></div>
+          <div class="project-tools" role="group" aria-label="Filtrar proyectos">
+            <button class="filter-btn active" data-filter="todos" aria-pressed="true">Todos</button>
+            <button class="filter-btn" data-filter="analisis" aria-pressed="false">Análisis de datos</button>
+            <button class="filter-btn" data-filter="dashboards" aria-pressed="false">Dashboards</button>
+          </div>
+        </div>
+        <div class="projects-grid" id="projectsGrid">
+          <article class="project-card" data-category="analisis" data-project="novaretail">
+            <div class="project-visual teal"><div class="visual-metric"><small>Correlación e insights</small><strong>NovaRetail+</strong></div><div class="visual-stamp" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16M7 15l4-5 3 2 4-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+            <div class="project-content"><span class="project-category">Análisis de datos · Estadística</span><h3>Análisis exploratorio y de correlación de clientes</h3><p>Exploración de los factores de comportamiento del cliente asociados con el ingreso anual y formulación de recomendaciones comerciales.</p><div class="tech-list"><span>Python</span><span>Pandas</span><span>SciPy</span><span>Seaborn</span></div><button class="project-link" data-open-project="novaretail">Ver ficha del proyecto <span aria-hidden="true">↗</span></button></div>
+          </article>
+          <article class="project-card" data-category="analisis" data-project="abtest">
+            <div class="project-visual copper"><div class="visual-metric"><small>Experimentación</small><strong>Test A/B</strong></div><div class="visual-stamp" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16M7 15h3V9h4V6h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+            <div class="project-content"><span class="project-category">Análisis de datos · Inferencia</span><h3>Análisis de experimento A/B para e-commerce</h3><p>Comparación estadística de dos versiones de una página para evaluar conversión y gasto promedio.</p><div class="tech-list"><span>Python</span><span>Prueba t</span><span>Chi-cuadrado</span><span>Statsmodels</span></div><button class="project-link" data-open-project="abtest">Ver ficha del proyecto <span aria-hidden="true">↗</span></button></div>
+          </article>
+          <article class="project-card" data-category="dashboards" data-project="realestate">
+            <div class="project-visual blue"><div class="visual-metric"><small>Inteligencia de negocios</small><strong>Real Estate</strong></div><div class="visual-stamp" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16M7 14h3V9h3V6h4v8h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+            <div class="project-content"><span class="project-category">Dashboard · Power BI</span><h3>Análisis comercial y retención de clientes</h3><p>Dashboard para evaluar ingresos, canales, tipos de propiedad y recurrencia mediante cohortes.</p><div class="tech-list"><span>Power BI</span><span>DAX</span><span>Star Schema</span><span>Cohortes</span></div><button class="project-link" data-open-project="realestate">Ver ficha del proyecto <span aria-hidden="true">↗</span></button></div>
+          </article>
+          <article class="project-card" data-category="dashboards" data-project="rappiplus">
+            <div class="project-visual green"><div class="visual-metric"><small>Ventas y rentabilidad</small><strong>RappiPlus</strong></div><div class="visual-stamp" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16M7 14l3-4 3 2 4-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+            <div class="project-content"><span class="project-category">Dashboard · Power BI</span><h3>Dashboard de rendimiento comercial y financiero</h3><p>Reporte interactivo de ingresos, costos, margen de beneficio y efectividad de marketing.</p><div class="tech-list"><span>Power BI</span><span>DAX</span><span>Power Query</span><span>Drill-through</span></div><button class="project-link" data-open-project="rappiplus">Ver ficha del proyecto <span aria-hidden="true">↗</span></button></div>
+          </article>
+          <article class="project-card" data-category="analisis" data-project="connectatel">
+            <div class="project-visual plum"><div class="visual-metric"><small>Segmentación</small><strong>ConnectaTel</strong></div><div class="visual-stamp" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.7"/><circle cx="17" cy="9" r="2" stroke="currentColor" stroke-width="1.7"/><path d="M3 19c0-3 2.2-5 6-5s6 2 6 5m0-4c3.2-.2 5 1.2 5 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div></div>
+            <div class="project-content"><span class="project-category">Análisis de datos · Clientes</span><h3>Segmentación de clientes en telecomunicaciones</h3><p>Limpieza de datos, detección de valores atípicos y segmentación por edad y nivel de uso.</p><div class="tech-list"><span>Python</span><span>Pandas</span><span>EDA</span><span>Outliers</span></div><button class="project-link" data-open-project="connectatel">Ver ficha del proyecto <span aria-hidden="true">↗</span></button></div>
+          </article>
+        </div>
+        <p class="project-note">Las fichas resumen el trabajo realizado. Los enlaces a notebooks, repositorios o archivos de Power BI se pueden incorporar cuando estén publicados y disponibles.</p>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+      <div class="container contact-grid">
+        <div><span class="section-kicker">Contacto</span><h2>Conversemos sobre datos, territorio y nuevos proyectos.</h2><p>Estoy abierto a conectar con profesionales y equipos interesados en el análisis de datos, la geotecnia, la observación aérea y las soluciones técnicas.</p></div>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="https://linkedin.com/in/jos%C3%A9-luis-montoya-zambrano" target="_blank" rel="noopener noreferrer">Visitar mi LinkedIn <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-secondary" href="https://github.com/josemontoyadrones-eng" target="_blank" rel="noopener noreferrer">Ver mi GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-row"><span>© <span id="year"></span> José Luis Montoya Zambrano</span><span>Portafolio profesional · Geociencias, UAS y análisis de datos</span></div></footer>
+
+  <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal" role="document">
+      <div class="modal-top"><div><span class="project-category" id="modalCategory">Ficha del proyecto</span><h2 id="modalTitle">Proyecto</h2></div><button class="modal-close" id="modalClose" aria-label="Cerrar ficha">×</button></div>
+      <p class="modal-description" id="modalDescription"></p>
+      <h3>Qué se realizó</h3><ul id="modalWork"></ul>
+      <h3>Herramientas utilizadas</h3><div class="tech-list" id="modalTech"></div>
+      <div class="modal-conclusion" id="modalConclusion"></div>
+    </div>
+  </div>
+
+  <script>
+    const projectDetails = {
+      novaretail: {
+        category: 'Análisis de datos · Estadística',
+        title: 'Análisis exploratorio y de correlación de clientes — NovaRetail+',
+        description: 'Proyecto enfocado en identificar los factores del comportamiento de los clientes que se relacionan con el ingreso anual de una plataforma de comercio.',
+        work: [
+          'Exploración y análisis de relaciones entre variables de comportamiento, inversión publicitaria, tráfico y resultados comerciales.',
+          'Aplicación de correlación de Pearson y Spearman, correlación punto biserial y V de Cramér.',
+          'Evaluación de la frecuencia de compra mensual como variable con relación lineal muy alta con el ingreso anual (correlación reportada: 0,97).',
+          'Identificación de una relación entre inversión en publicidad dirigida y visitas mensuales (correlación reportada: 0,58).',
+          'Planteamiento de recomendaciones centradas en la retención y la frecuencia de compra.'
+        ],
+        tech: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'SciPy'],
+        conclusion: 'Implicación de negocio: priorizar estrategias que impulsen la frecuencia de compra y la retención, en lugar de depender principalmente de una segmentación geográfica.'
+      },
+      abtest: {
+        category: 'Análisis de datos · Inferencia estadística',
+        title: 'Análisis de experimento A/B para e-commerce',
+        description: 'Evaluación de dos versiones de una landing page —versión A de control y versión B de prueba— para comparar su desempeño comercial.',
+        work: [
+          'Validación de calidad sobre 40.000 registros: revisión de integridad, nulos, duplicados y tipos de datos.',
+          'Comparación del gasto promedio por usuario convertido mediante una prueba t de Welch.',
+          'Evaluación de las tasas de conversión mediante una prueba Z de proporciones.',
+          'Análisis por canal de tráfico con pruebas de Chi-cuadrado y comparación entre usuarios nuevos y recurrentes.',
+          'Interpretación de la evidencia estadística para formular una recomendación de producto.'
+        ],
+        tech: ['Python', 'Pandas', 'NumPy', 'SciPy', 'Statsmodels', 'Matplotlib', 'Seaborn'],
+        conclusion: 'Resultado reportado: la versión B obtuvo una conversión de 15,96 % frente a 12,57 % en la versión A, con diferencia estadísticamente significativa (p < 0,05). Se recomendó migrar el tráfico a la versión B.'
+      },
+      realestate: {
+        category: 'Dashboard · Power BI',
+        title: 'Análisis comercial y retención de clientes — Real Estate Dashboard',
+        description: 'Solución de inteligencia de negocios para Andes Capital Real Estate, orientada a analizar el desempeño comercial y los patrones de recurrencia de clientes.',
+        work: [
+          'Diseño de un modelo de datos en esquema de estrella conectado a una dimensión de fechas.',
+          'Construcción de un overview ejecutivo con ingresos, cantidad de ventas, ticket promedio y comisiones.',
+          'Desglose de resultados por tipo de propiedad, canal de venta, segmento y ciudad.',
+          'Creación de métricas DAX de inteligencia de tiempo, crecimiento interanual y participación porcentual.',
+          'Diseño de una matriz de cohortes para estudiar recompra y retención a lo largo del tiempo.'
+        ],
+        tech: ['Power BI Desktop', 'DAX', 'Star Schema', 'Dimensión de fechas', 'Cohortes'],
+        conclusion: 'Los análisis permiten comparar el desempeño por ubicación, tipo de propiedad y canal, y explorar ventanas de recompra de entre 3 y 6 meses según los hallazgos reportados.'
+      },
+      rappiplus: {
+        category: 'Dashboard · Power BI',
+        title: 'RappiPlus: dashboard de rendimiento comercial y financiero',
+        description: 'Reporte interactivo diseñado para revisar ventas, rentabilidad y efectividad de marketing mediante una estructura de datos integrada.',
+        work: [
+          'Integración lógica de transacciones de pedidos, catálogo de productos, marketing y dimensión de fechas.',
+          'Transformación y estandarización de variables transaccionales mediante Power Query.',
+          'Definición de medidas DAX para ingresos, beneficios y acumulados en el año (YTD).',
+          'Diseño de una vista ejecutiva para revisar costos, margen, gastos de marketing y tendencias temporales.',
+          'Creación de un detalle por pedido con formato condicional y navegación Drill-through.'
+        ],
+        tech: ['Power BI Desktop', 'Power Query', 'DAX', 'Star Schema', 'Drill-through'],
+        conclusion: 'El dashboard facilita pasar de indicadores consolidados al detalle de los pedidos para investigar márgenes positivos y negativos y apoyar decisiones comerciales.'
+      },
+      connectatel: {
+        category: 'Análisis de datos · Segmentación',
+        title: 'Análisis de datos y segmentación de clientes — ConnectaTel',
+        description: 'Análisis exploratorio y segmentación de una base de clientes de telecomunicaciones para estudiar patrones de consumo de llamadas y mensajes.',
+        work: [
+          'Tratamiento de valores centinela, como la edad registrada con -999, y revisión de datos faltantes.',
+          'Detección de valores atípicos de consumo mediante el rango intercuartílico.',
+          'Clasificación de usuarios por grupos de edad: joven, adulto y adulto mayor.',
+          'Segmentación según niveles de uso: bajo, medio y alto.',
+          'Síntesis de hallazgos para orientar la optimización de planes comerciales y acciones de retención.'
+        ],
+        tech: ['Python', 'Pandas', 'NumPy', 'Seaborn', 'Matplotlib', 'Jupyter / Colab'],
+        conclusion: 'El análisis exploratorio y la segmentación ayudan a distinguir patrones de uso y a plantear opciones comerciales adaptadas a diferentes perfiles de clientes.'
+      }
+    };
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        filterButtons.forEach(item => {
+          const selected = item === button;
+          item.classList.toggle('active', selected);
+          item.setAttribute('aria-pressed', String(selected));
+        });
+        projectCards.forEach(card => {
+          card.hidden = filter !== 'todos' && card.dataset.category !== filter;
+        });
+      });
+    });
+
+    const modal = document.getElementById('projectModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalWork = document.getElementById('modalWork');
+    const modalTech = document.getElementById('modalTech');
+    const modalConclusion = document.getElementById('modalConclusion');
+    let lastFocusedElement = null;
+
+    function openProject(projectKey) {
+      const project = projectDetails[projectKey];
+      if (!project) return;
+      lastFocusedElement = document.activeElement;
+      modalCategory.textContent = project.category;
+      modalTitle.textContent = project.title;
+      modalDescription.textContent = project.description;
+      modalWork.replaceChildren(...project.work.map(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        return li;
+      }));
+      modalTech.replaceChildren(...project.tech.map(item => {
+        const span = document.createElement('span');
+        span.textContent = item;
+        return span;
+      }));
+      modalConclusion.textContent = project.conclusion;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      modalClose.focus();
+    }
+    function closeProject() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocusedElement) lastFocusedElement.focus();
+    }
+    document.querySelectorAll('[data-open-project]').forEach(button => {
+      button.addEventListener('click', () => openProject(button.dataset.openProject));
+    });
+    modalClose.addEventListener('click', closeProject);
+    modal.addEventListener('click', event => { if (event.target === modal) closeProject(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape' && modal.classList.contains('open')) closeProject(); });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
